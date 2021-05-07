@@ -10,7 +10,7 @@
         <ion-col>
           <ion-item>
             <ion-label>Podaj kwotę w PLN</ion-label>
-            <ion-input placeholder="kwota" class="ion-text-end" type="number"></ion-input>
+            <ion-input placeholder="kwota" class="ion-text-end" type="number" [(ngModel)]="currencyInputValue"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -18,7 +18,7 @@
         <ion-col>
           <ion-item>
             <ion-label>Wybór waluty</ion-label>
-            <ion-select placeholder="Rozwiń">
+            <ion-select placeholder="Rozwiń" [(ngModel)]="currencyType">
               <ion-select-option value="EUR">EUR</ion-select-option>
               <ion-select-option value="USD">USD</ion-select-option>
               <ion-select-option value="CHF">CHF</ion-select-option>
@@ -28,7 +28,14 @@
       </ion-row>
       <ion-row>
         <ion-col offset="3" size="6">
-          <ion-button expand="block">Oblicz</ion-button>
+          <ion-button (click)="calc()" expand="block">Oblicz</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <!-- {{ currencyInputValue }} {{ currencyType}} -->
+
+          {{ result }}
         </ion-col>
       </ion-row>
     </ion-grid>

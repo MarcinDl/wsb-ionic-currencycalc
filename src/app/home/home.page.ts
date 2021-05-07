@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NbpService } from '../services/nbp.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,23 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private nbpservice:NbpService
+  ) {}
 
+  currencyInputValue:any;
+  currencyType:any;
+  result:any;
+  currencyValue:any;
+  calc(){
+
+
+    console.log(this.currencyType)
+    this.nbpservice.currencyKind = this.currencyType;
+    this.nbpservice.getCurrency().subscribe( result => {
+      this.currencyValue = Object(result).rates[0].mid;
+      return this.result = this.currencyInputValue/this.currencyValue;
+    })
+
+  }
 }
